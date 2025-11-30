@@ -140,53 +140,12 @@
   background-color: transparent;
 }
 
-/* Визуальная подсветка при нажатии: псевдоэлемент outline */
-.card__icon-button::before {
-  content: "";
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  outline: 2px solid var(--main-color);
-  outline-offset: -3px;                 /* рисуется "внутри" блока */
-  opacity: 0;                           /* изначально скрыт */
-  transition: opacity 0.3s ease;
-}
-.card__icon-button:active::before {
-  opacity: 1;                           /* появляется при активном клике */
-}
 
-/* Карточная кнопка Like (рядом с иконкой) и кнопка в футере
-   используют одинаковую логику "заливки" (псевдоэлемент ::before) */
-.card__like-button,
-.footer__button {
-  background-color: var(--background-color);
-  overflow: hidden;                     /* скрывает псевдоэлемент, выступающий за границы */
-  position: relative;
-}
-
-/* Псевдоэлемент, который "заезжает" слева направо — визуальная заливка */
-.card__like-button::before,
-.footer__button::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;                          /* старт за пределами слева */
-  width: 100%;
-  height: 100%;
-  background-color: var(--main-color);  /* цвет заливки — основной цвет */
-  transition: left 0.5s ease-in-out;    /* плавное перемещение */
-  z-index: 0;                           /* под текстом (текст должен быть поверх) */
-}
-
-/* При наведении фон съезжает в позицию left: 0 */
 .card__like-button:hover::before,
 .footer__button:hover::before {
-  left: 0;
+  left: 0;/* При наведении фон съезжает */
 }
 
-/* Конкретные размеры/паддинги для кнопки Like */
 .card__like-button {
   width: 130px;
   min-height: 38px;
@@ -194,12 +153,10 @@
   border: 2px solid var(--main-color);
 }
 
-/* Футерная кнопка: большая, чуть иные паддинги */
 .footer__button {
   gap: 8px;
   min-height: 55px;
   padding: 15px 20px;
-  overflow: hidden;
 }
 
 /* Текст кнопки — выше псевдоэлемента (z-index) */
@@ -336,10 +293,3 @@ dialog::backdrop {
   .footer__button svg { width: 28px; height: 28px; }
 }
 
-@supports ((-webkit-text-stroke: 1px var(--watermark-stroke-color))) and (mix-blend-mode: hard-light) {
-  .post__cover__watermark {
-    mix-blend-mode: hard-light;         /* меняет визуальное наложение текста */
-    text-shadow: none;
-    -webkit-text-stroke: 1px var(--watermark-stroke-color);
-  }
-}

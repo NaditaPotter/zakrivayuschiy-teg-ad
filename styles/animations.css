@@ -94,7 +94,7 @@
 }
 
 /*лайк*/
-.card__like-button {
+.card__like-button, .footer__button {
   position: relative; /*Контейнер*/
   border: 2px solid var(--main-color);
   overflow: hidden;/* скрываем выезжающий фон */
@@ -103,16 +103,16 @@
 }
 
  /*+ тень*/
-.card__like-button:focus {
+.card__like-button:focus, .footer__button:focus {
   outline: none;
   box-shadow: 2px 2px 0 0 var(--main-color);
 }
 
-.card__like-button:hover {
+.card__like-button:hover, .footer__button:hover {
   box-shadow: 2px 2px 0 0 var(--main-color);
 }
 
-.card__like-button::before {
+.card__like-button::before, .footer__button::before {
   content: "";
   position: absolute;
   left: -100%;/* фон за пределами слева */
@@ -123,13 +123,13 @@
   transition: left 0.5s ease-in-out; /* плавное заезжание */
 }
 
-.card__like-button .button__text {
+.card__like-button .button__text, .footer__button .button__text {
   position: relative;
   z-index: 2;/* текст поверх заливки */
   color: var(--main-color);      /* по умолчанию тёмный (чёрный) */
   transition: color 0.3s ease;
 }
 
-.card__like-button:hover .button__text {
+.card__like-button:hover .button__text, .footer__button:hover .button__text {
   color: var(--button-text-color);
 }
