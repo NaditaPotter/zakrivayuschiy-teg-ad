@@ -98,16 +98,6 @@
   text-align: right;
 }
 
-/* Фоллбек: если браузер поддерживает text-stroke и mix-blend-mode,
-   переключаемся на смешивание для лучшего эффекта */
-@supports ((-webkit-text-stroke: 1px var(--watermark-stroke-color))) and (mix-blend-mode: hard-light) {
-  .post__cover__watermark {
-    mix-blend-mode: hard-light;         /* меняет визуальное наложение текста */
-    text-shadow: none;
-    -webkit-text-stroke: 1px var(--watermark-stroke-color);
-  }
-}
-
 /* Тело поста (текст, кнопки) */
 .post__content {
   display: flex;
