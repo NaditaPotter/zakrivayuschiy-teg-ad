@@ -159,28 +159,23 @@
   padding: 15px 20px;
 }
 
-/* Текст кнопки — выше псевдоэлемента (z-index) */
 .button__text {
   position: relative;
-  z-index: 1;
   color: var(--main-color);             /* по умолчанию чёрный */
   font-family: var(--font-accent), sans-serif;
   font-weight: 400;
   font-size: 14px;
   line-height: 90%;
-  transition: color 0.3s ease;
 }
 
-/* При наведении цвет текста становится белым (через переменную) */
 .card__like-button:hover .button__text,
 .footer__button:hover .button__text {
-  color: var(--button-text-color);      /* обычно #ffffff */
+  color: var(--button-text-color);
 }
 
 /* Иконки внутри кнопок тоже перекрашиваются */
 .button svg {
   position: relative;
-  z-index: 1;
   color: currentColor;
   transition: color 0.3s ease;
 }
@@ -189,20 +184,15 @@
   color: var(--button-text-color);
 }
 
-/* ============================================================
-   6. DIALOG (модальное окно)
-   ------------------------------------------------------------
-   Стили диалога и затемнения фона (backdrop)
-   ============================================================ */
 dialog {
-  width: clamp(21.375rem, 18.0838rem + 14.1565vw, 21.999rem); /* адаптивная ширина */
+  width: clamp(21.375rem, 18.0838rem + 14.1565vw, 21.999rem); /*окошко*/
   border: 2px solid var(--main-color);
   padding: 30px;
   background: var(--background-color);
   margin: auto;
 }
 
-/* затемнение страницы позади диалога */
+/* затемнение */
 dialog::backdrop {
   opacity: 0.75;
   background: var(--main-color);
@@ -235,21 +225,10 @@ dialog::backdrop {
   gap: 10px;
   width: 100%;
 }
+
 .dialog__button .button__text {
   color: var(--main-color);
 }
-
-/* ============================================================
-   7. IMAGE FILTERS (фильтры для разных тестов/картинок)
-   ------------------------------------------------------------
-   Быстрые классы для применения CSS-фильтров на изображениях
-   ============================================================ */
-.image_blur { filter: blur(0.15rem); }
-.image_opacity { filter: opacity(0.85); }
-.image_brightness { filter: brightness(120%); }
-.image_grayscale { filter: grayscale(0.75); }
-.image_saturate { filter: saturate(155%); }
-.image_sepia { filter: sepia(75%); }
 
 /* сложный набор эффектов — используется в одном из тестов */
 .image_effects {
@@ -293,3 +272,10 @@ dialog::backdrop {
   .footer__button svg { width: 28px; height: 28px; }
 }
 
+@supports ((-webkit-text-stroke: 1px var(--watermark-stroke-color))) and (mix-blend-mode: hard-light) {
+  .post__cover__watermark {
+    mix-blend-mode: hard-light;         /* меняет визуальное наложение текста */
+    text-shadow: none;
+    -webkit-text-stroke: 1px var(--watermark-stroke-color);
+  }
+}
