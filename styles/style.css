@@ -1,66 +1,60 @@
-/* Здесь вы напишете основную часть стилей страницы.
-
-Будьте внимательны! Для корректной работы скриптов на этом сайте нужно, чтобы в HTML некоторые классы были названы особым образом:
-✦ like-icon — для svg-иконки анимированного сердца
-✦ card__like-button — для кнопки Like рядом с иконкой
-✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ is-liked — для обозначения состояния лайкнутой иконки в виде сердца
-✦ button__text — для обозначения текстового элемента внутри кнопки
-
-*/
-
-/* --- 1. PAGE SETUP (Основной контейнер body) --- */
+/* ============================================================
+   1. PAGE SETUP (Основной контейнер страницы)
+   ------------------------------------------------------------
+   Описание блока:
+   Здесь задаём фон страницы, центрирование, базовую типографику и
+   минимальные размеры. Эти правила влияют на весь макет.
+   ============================================================ */
 .page {
-  /* Фон (Шаг 6) */
-  background: var(--background-gradient); /* Предполагается, что --background является --background-gradient */
-  background-position: center;
-  background-attachment: fixed;
-  background-size: cover;
-  /* Размеры и центрирование (Шаг 2.2, 2.3) */
-  /* --page-width: 700px; */
-  width: 700px;
-  /* --min-page-width: 310px; */
-  min-width: 310px;
-  max-width: 100%;
-  /* --page-margin: 100px; */
-  margin: 100px auto; /* Центрирование */
+  /* Фон страницы: это градиент/сеточка, вынесенная в переменную */
+  background: var(--background-gradient);
+  /* Если убрать background — страница станет одноцветной (или унаследует фон от body) */
+  background-position: center;         /* позиционирование фонa (по центру) */
+  background-attachment: fixed;        /* фон не скроллится вместе со страницей */
+  background-size: cover;              /* фон масштабируется, чтобы покрыть контейнер */
 
-  /* Типографика (Шаг 2.1) */
-  color: var(--main-color);
-  font-family: var(--font-main), sans-serif;
-  font-size: var(--font-size);
-  font-variation-settings: "wght" var(--font-weight-content);
+  /* Размеры и центрирование */
+  width: 700px;                        /* фиксированная основная ширина макета */
+  min-width: 310px;                    /* минимальная ширина, чтобы не ломать верстку */
+  max-width: 100%;                     /* не вылазит за экран */
+  margin: 100px auto;                  /* центрирует блок по горизонтали; 100px — верх/низ */
 
-  /* Базовые свойства для корректной работы */
-  min-inline-size: 320px;
-  min-block-size: 100dvb;
+  /* Базовая типографика */
+  color: var(--main-color);            /* основной текстовый цвет */
+  font-family: var(--font-main), sans-serif; /* семейство шрифтов */
+  font-size: var(--font-size);         /* корневой размер шрифта (в переменной) */
+  font-variation-settings: "wght" var(--font-weight-content); /* вариативный шрифт: вес */
+
+  /* Базовые ограничения (защита от очень маленьких экранов) */
+  min-inline-size: 320px;              /* минимальная ширина контейнера в логике лэйаута */
+  min-block-size: 100dvb;              /* минимальная высота — 100% видовой высоты (dvb) */
 }
 
-/* --- 2. HEADER (Шапка) --- */
-
+/* ============================================================
+   2. HEADER (Шапка сайта)
+   ------------------------------------------------------------
+   Здесь задаются размеры шапки, отступы и семейство шрифта для
+   заголовка/подзаголовка.
+   ============================================================ */
 .header {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* --header-gap: 23px; */
-  gap: 23px;
-  /* --header-bottom-margin: 99px; */
-  margin-bottom: 99px;
-  border: 2px solid var(--main-color);
-  padding: 0;
-  font-family: var(--font-accent), sans-serif;
-  background-color: var(--background-color);
-  /* --page-width: 700px; */
-  width: 700px;
-  /* --header-height: 368px; */
-  height: 368px;
-  margin-left: auto;
-  margin-right: auto;
+  gap: 23px;                           /* расстояние между элементами в шапке */
+  margin-bottom: 99px;                 /* отступ под шапкой */
+
+  border: 2px solid var(--main-color); /* рамка вокруг шапки */
+  padding: 0;                           /* убираем внутренние отступы */
+
+  font-family: var(--font-accent), sans-serif; /* акцентный шрифт для логотипа */
+  background-color: var(--background-color);   /* фон шапки */
+  width: 700px;                        /* соответствует .page.width */
+  height: 368px;                       /* фиксированная высота шапки */
   position: relative;
 }
 
+/* Логотип (вложенный блок) */
 .header__logo {
   display: flex;
   flex-direction: column;
@@ -71,57 +65,64 @@
   height: 100%;
 }
 
+/* Главный заголовок */
 .header__title {
   font-size: clamp(3.0624rem, 2.7103rem + 1.5023vw, 4.0626rem);
-  text-transform: uppercase;
+  text-transform: uppercase;           /* делаем буквы заглавными */
 }
+.header__title:focus { outline: none; } /* убираем браузерный outline при фокусе */
 
-.header__title:focus {
-  outline: none;
-}
-
+/* Подзаголовок */
 .header__description {
   font-size: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4374rem);
   text-transform: uppercase;
 }
 
-/* --- 3. MAIN CONTENT (Контейнер карточек) --- */
-
+/* ============================================================
+   3. MAIN CONTENT (Карточки / посты)
+   ------------------------------------------------------------
+   Основной столбец с карточками постов, их заголовки и обёртки
+   ============================================================ */
 .main {
   display: flex;
   flex-direction: column;
-  /* --post-gap: 50px; */
-  gap: 50px;
+  gap: 50px;                            /* расстояние между карточками */
 }
 
 .post {
-  border: 3px solid var(--main-color);
+  border: 3px solid var(--main-color);  /* рамка карточки */
   background-color: var(--background-color);
 }
 
+/* Заголовок поста */
 .post__title {
-  /* --post-title-padding: 5px 10px; */
   padding: 5px 10px;
   font-size: 19px;
   font-variation-settings: "wght" var(--font-weight-heading);
 }
 
+/* Обложка — картинка + рамки сверху/снизу */
 .post__cover {
   position: relative;
   border-top: 2px solid var(--main-color);
   border-bottom: 2px solid var(--main-color);
 }
 
+/* Картинка обложки */
 .post__cover__image {
   width: 100%;
   height: 100%;
   display: block;
-  object-fit: cover;
+  object-fit: cover;                    /* заполнение контейнера с обрезкой по краям */
   object-position: center;
 }
+/* Примечание: если заменить object-fit: contain, картинка уместится целиком, но могут быть поля */
 
-/* --- 4. IMAGE LABEL (Лейбл поверх картинки) --- */
-
+/* ============================================================
+   4. IMAGE LABEL (Водяной знак поверх картинки)
+   ------------------------------------------------------------
+   "плашка" в правом верхнем углу картинок
+   ============================================================ */
 .post__cover__watermark {
   position: absolute;
   top: 25px;
@@ -132,57 +133,54 @@
   font-weight: 400;
   font-size: 14px;
   text-align: right;
-  /* Фоллбэк для обводки */
-  text-shadow: 1px 1px 0 var(--watermark-stroke-color, currentColor);
+  text-shadow: 1px 1px 0 var(--watermark-stroke-color, currentColor); /* тонкая "обводка" */
 }
 
-@supports (
-    (-webkit-text-stroke: 1px var(--watermark-stroke-color))
-  )
-  and (mix-blend-mode: hard-light) {
+/* Фоллбек: если браузер поддерживает text-stroke и mix-blend-mode,
+   переключаемся на смешивание для лучшего эффекта */
+@supports ((-webkit-text-stroke: 1px var(--watermark-stroke-color))) and (mix-blend-mode: hard-light) {
   .post__cover__watermark {
-    mix-blend-mode: hard-light;
+    mix-blend-mode: hard-light;         /* меняет визуальное наложение текста */
     text-shadow: none;
     -webkit-text-stroke: 1px var(--watermark-stroke-color);
   }
 }
 
+/* Тело поста (текст, кнопки) */
 .post__content {
   display: flex;
   flex-direction: column;
   gap: 27px;
-  /* --post-content-padding: 25px; */
   padding: 25px;
-  /* --post-content-padding-bottom: 22px; */
   padding-bottom: 22px;
   font-size: 18px;
   line-height: 22px;
   font-variation-settings: "wght" var(--font-weight-content);
 }
 
-/* --- 5. BUTTONS AND INTERACTIONS (Кнопки и футер) --- */
-
+/* ============================================================
+   5. BUTTONS AND INTERACTIONS (Кнопки: Like, Footer и др.)
+   ------------------------------------------------------------
+   Здесь — все правила для кнопок и их псевдоэлементов (залив)
+   ============================================================ */
 .post__buttons {
   display: flex;
-  justify-content: end;
-  /* --post-buttons-gap: 7px; */
+  justify-content: end;                 /* выравнивание кнопок вправо */
   gap: 7px;
-  /* --post-buttons-padding-bottom: 3px; */
   padding-bottom: 3px;
 }
 
+/* Футер (нижняя панель) */
 .main__footer {
-  /* --main-footer-justify: center; */
   justify-content: center;
   display: flex;
-  /* --page-width: 700px; */
   width: 700px;
   min-width: 310px;
   max-width: 100%;
-  /* --post-gap: 50px; */
   margin: 50px auto 0;
 }
 
+/* Общие стили для кнопок */
 .button {
   position: relative;
   display: flex;
@@ -190,30 +188,29 @@
   align-items: center;
   border: 2px solid var(--main-color);
   background-color: var(--background-color);
-  transition: box-shadow 0.3s ease;
+  transition: box-shadow 0.3s ease;     /* плавность для тени */
   cursor: pointer;
 }
 
+/* При наведении и фокусе даём тень */
 .button:hover,
 .button:focus {
-  box-shadow: 2px 2px 0px 0px var(--main-color);
+  box-shadow: 2px 2px 0px 0px var(--main-color); /* смещённая контурная тень */
 }
 
+/* Кнопка-обёртка для иконки (сердца) */
 .card__icon-button {
   position: relative;
   display: flex;
   align-items: end;
-  /* --icon-button-min-height: 38px; */
   min-height: 38px;
   border: none;
   background-color: transparent;
   cursor: pointer;
 }
+.card__icon-button:focus { outline: none; }
 
-.card__icon-button:focus {
-  outline: none;
-}
-
+/* Визуальная подсветка при нажатии: псевдоэлемент outline */
 .card__icon-button::before {
   content: "";
   width: 100%;
@@ -222,63 +219,64 @@
   top: 0;
   left: 0;
   outline: 2px solid var(--main-color);
-  outline-offset: -3px;
-  opacity: 0;
+  outline-offset: -3px;                 /* рисуется "внутри" блока */
+  opacity: 0;                           /* изначально скрыт */
   transition: opacity 0.3s ease;
 }
-
 .card__icon-button:active::before {
-  opacity: 1;
+  opacity: 1;                           /* появляется при активном клике */
 }
 
+/* Карточная кнопка Like (рядом с иконкой) и кнопка в футере
+   используют одинаковую логику "заливки" (псевдоэлемент ::before) */
 .card__like-button,
 .footer__button {
   background-color: var(--background-color);
-  overflow: hidden;
+  overflow: hidden;                     /* скрывает псевдоэлемент, выступающий за границы */
   position: relative;
 }
 
+/* Псевдоэлемент, который "заезжает" слева направо — визуальная заливка */
 .card__like-button::before,
 .footer__button::before {
   content: "";
   position: absolute;
   top: 0;
-  left: -100%;
+  left: -100%;                          /* старт за пределами слева */
   width: 100%;
   height: 100%;
-  background-color: var(--main-color);
-  transition: left 0.5s ease-in-out;
-  z-index: 0;
+  background-color: var(--main-color);  /* цвет заливки — основной цвет */
+  transition: left 0.5s ease-in-out;    /* плавное перемещение */
+  z-index: 0;                           /* под текстом (текст должен быть поверх) */
 }
 
+/* При наведении фон съезжает в позицию left: 0 */
 .card__like-button:hover::before,
 .footer__button:hover::before {
   left: 0;
 }
 
+/* Конкретные размеры/паддинги для кнопки Like */
 .card__like-button {
-  /* --like-button-width: 130px; */
   width: 130px;
-  /* --like-button-height: 38px; */
   min-height: 38px;
-  /* --like-button-padding: 9px 17px; */
   padding: 9px 17px;
   border: 2px solid var(--main-color);
 }
 
+/* Футерная кнопка: большая, чуть иные паддинги */
 .footer__button {
   gap: 8px;
-  /* --footer-button-height: 55px; */
   min-height: 55px;
-  /* --footer-button-padding: 15px 20px; */
   padding: 15px 20px;
   overflow: hidden;
 }
 
+/* Текст кнопки — выше псевдоэлемента (z-index) */
 .button__text {
   position: relative;
   z-index: 1;
-  color: var(--main-color);
+  color: var(--main-color);             /* по умолчанию чёрный */
   font-family: var(--font-accent), sans-serif;
   font-weight: 400;
   font-size: 14px;
@@ -286,33 +284,38 @@
   transition: color 0.3s ease;
 }
 
+/* При наведении цвет текста становится белым (через переменную) */
 .card__like-button:hover .button__text,
 .footer__button:hover .button__text {
-  color: var(--button-text-color);
+  color: var(--button-text-color);      /* обычно #ffffff */
 }
 
+/* Иконки внутри кнопок тоже перекрашиваются */
 .button svg {
   position: relative;
   z-index: 1;
   color: currentColor;
   transition: color 0.3s ease;
 }
-
 .button:hover svg,
 .button:focus svg {
   color: var(--button-text-color);
 }
 
-/* --- 6. DIALOG (Модальное окно) --- */
-
+/* ============================================================
+   6. DIALOG (модальное окно)
+   ------------------------------------------------------------
+   Стили диалога и затемнения фона (backdrop)
+   ============================================================ */
 dialog {
-  width: clamp(21.375rem, 18.0838rem + 14.1565vw, 21.999rem);
+  width: clamp(21.375rem, 18.0838rem + 14.1565vw, 21.999rem); /* адаптивная ширина */
   border: 2px solid var(--main-color);
   padding: 30px;
   background: var(--background-color);
   margin: auto;
 }
 
+/* затемнение страницы позади диалога */
 dialog::backdrop {
   opacity: 0.75;
   background: var(--main-color);
@@ -345,108 +348,54 @@ dialog::backdrop {
   gap: 10px;
   width: 100%;
 }
-
 .dialog__button .button__text {
   color: var(--main-color);
 }
 
-/* --- 7. IMAGE FILTERS (Шаг 6) --- */
+/* ============================================================
+   7. IMAGE FILTERS (фильтры для разных тестов/картинок)
+   ------------------------------------------------------------
+   Быстрые классы для применения CSS-фильтров на изображениях
+   ============================================================ */
+.image_blur { filter: blur(0.15rem); }
+.image_opacity { filter: opacity(0.85); }
+.image_brightness { filter: brightness(120%); }
+.image_grayscale { filter: grayscale(0.75); }
+.image_saturate { filter: saturate(155%); }
+.image_sepia { filter: sepia(75%); }
 
-.image_blur {
-  /* --filter-blur: blur(0.15rem); */
-  filter: blur(0.15rem);
-}
-
-.image_opacity {
-  /* --filter-opacity: opacity(0.85); */
-  filter: opacity(0.85);
-}
-
-.image_brightness {
-  /* --filter-brightness: brightness(120%); */
-  filter: brightness(120%);
-}
-
-.image_grayscale {
-  /* --filter-grayscale: grayscale(0.75); */
-  filter: grayscale(0.75);
-}
-
-.image_saturate {
-  /* --filter-saturate: saturate(155%); */
-  filter: saturate(155%);
-}
-
-.image_sepia {
-  /* --filter-sepia: sepia(75%); */
-  filter: sepia(75%);
-}
-
+/* сложный набор эффектов — используется в одном из тестов */
 .image_effects {
-  /* Мультифильтр (Шаг 6) */
-  /* --filter-effects: blur(0.1rem) opacity(0.8) brightness(101%) grayscale(0.5) saturate(115%) sepia(50%) contrast(111%); */
-  filter: blur(0.1rem) opacity(0.8) brightness(101%) grayscale(0.5) saturate(115%) sepia(50%) contrast(111%);
+  filter: blur(0.1rem) opacity(0.8) brightness(101%) grayscale(0.5)
+          saturate(115%) sepia(50%) contrast(111%);
 }
-
-/* --- 8. ADAPTIVE (Шаг 5) --- */
 
 @media (width <= 375px) {
   .page {
-    /* --min-page-width: 310px; */
     min-width: 310px;
     padding: 0;
     width: 100%;
     margin: 100px auto;
   }
 
-  .header {
-    width: 100%;
-    max-width: 100%;
-  }
-
+  .header { width: 100%; max-width: 100%; }
   .header__title {
     font-size: 2.2rem;
     word-break: break-all;
     text-align: center;
     padding: 0 10px;
   }
+  .header__description { font-size: 1rem; text-align: center; }
 
-  .header__description {
-    font-size: 1rem;
-    text-align: center;
-  }
+  .main { width: 100%; padding: 0 10px; }
+  .post { width: 100%; max-width: none; margin: 0 auto; }
 
-  .main {
-    width: 100%;
-    padding: 0 10px;
-  }
+  .post__cover { min-height: 150px; }
+  .post__cover__image { max-height: 400px; object-fit: cover; }
 
-  .post {
-    width: 100%;
-    max-width: none;
-    margin: 0 auto;
-  }
+  .main__footer { width: 100%; padding: 0 10px; margin: 50px auto 0; }
 
-  .post__cover {
-    min-height: 150px;
-  }
-
-  .post__cover__image {
-    max-height: 400px;
-    object-fit: cover;
-  }
-
-  .main__footer {
-    width: 100%;
-    padding: 0 10px;
-    /* --post-gap: 50px; */
-    margin: 50px auto 0;
-  }
-
-  .dialog {
-    width: calc(100vw - 40px);
-    max-width: 357px;
-  }
+  .dialog { width: calc(100vw - 40px); max-width: 357px; }
 
   .footer__button {
     flex-direction: column;
@@ -454,8 +403,6 @@ dialog::backdrop {
     width: 100%;
   }
 
-  .footer__button svg {
-    width: 28px;
-    height: 28px;
-  }
+  .footer__button svg { width: 28px; height: 28px; }
 }
+
