@@ -16,30 +16,19 @@
   color: var(--main-color);
   font-family: var(--font-main), sans-serif;
   font-size: var(--font-size);
-  font-variation-settings: "wght" var(--font-weight-content); /* вариативный шрифт: вес */
-
-
 }
 
 .header {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 23px;                           /* расстояние между элементами в шапке */
-  margin-bottom: 99px;                 /* отступ под шапкой */
-
-  border: 2px solid var(--main-color); /* рамка вокруг шапки */
-  padding: 0;                           /* убираем внутренние отступы */
-
-  font-family: var(--font-accent), sans-serif; /* акцентный шрифт для логотипа */
-  background-color: var(--background-color);   /* фон шапки */
-  width: 700px;                        /* соответствует .page.width */
-  height: 368px;                       /* фиксированная высота шапки */
-  position: relative;
+  margin-bottom: 99px;/* под шапкой */
+  border: 2px solid var(--main-color);
+  font-family: var(--font-accent), sans-serif; /*шрифт для лого*/
+  background-color: var(--background-color);
+  width: 700px;
+  height: 368px;
 }
 
-/* Логотип (вложенный блок) */
+/* Логотипчик */
 .header__logo {
   display: flex;
   flex-direction: column;
@@ -50,28 +39,26 @@
   height: 100%;
 }
 
-/* Главный заголовок */
+/* хтмл */
 .header__title {
-  font-size: clamp(3.0624rem, 2.7103rem + 1.5023vw, 4.0626rem);
-  text-transform: uppercase;           /* делаем буквы заглавными */
+  font-size: clamp(3.0624rem, 2.7103rem + 1.5023vw, 4.0626rem); /*размер буковок*/
+  text-transform: uppercase;
 }
-.header__title:focus { outline: none; } /* убираем браузерный outline при фокусе */
 
-/* Подзаголовок */
+.header__title:focus {
+  outline: none; /*без рамки*/
+}
+
+/* закр. тег */
 .header__description {
   font-size: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4374rem);
   text-transform: uppercase;
 }
 
-/* ============================================================
-   3. MAIN CONTENT (Карточки / посты)
-   ------------------------------------------------------------
-   Основной столбец с карточками постов, их заголовки и обёртки
-   ============================================================ */
 .main {
   display: flex;
   flex-direction: column;
-  gap: 50px;                            /* расстояние между карточками */
+  gap: 50px;/* м/д карточками */
 }
 
 .post {
