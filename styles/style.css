@@ -255,59 +255,45 @@ dialog::backdrop {
 }
 
 @media (width <= 375px) {
-  
-  /* 1. ГЛАВНЫЙ КОНТЕЙНЕР: Занимает 100% ширины, убираем отступы */
   .page {
-    width: 100%; /* Полная ширина экрана */
+    width: 100%;
     min-width: 320px;
-    padding: 0; /* Убираем внешние отступы, чтобы контент мог прижаться к краям */
-    margin: 100px 0 0; /* Убираем горизонтальный margin: auto */
+    padding: 0;
   }
 
-  /* 2. ШАПКА: Растягиваем на 100% и делаем отступы внутренними */
   .header {
     width: 100%;
     max-width: 100%;
-    /* высота уже установлена как auto в базовом стиле */
-    margin-bottom: 50px; 
-    /* Добавим внутренний отступ, чтобы контент не прилипал к краям */
-    padding: 20px 10px; 
-    box-sizing: border-box; /* Важно: padding не увеличивает общую ширину */
-    flex-direction: column; /* Если элементы внутри шапки нужно расположить вертикально */
+    margin-bottom: 50px;
+    padding: 20px 10px;
     align-items: center;
     text-align: center;
   }
   
-  /* 3. ЗАГОЛОВОК: Обеспечиваем перенос */
   .header__title {
     font-size: 2.2rem;
-    word-break: break-word; /* Важно для переноса длинных слов */
-    white-space: normal; /* Обязательно, чтобы разрешить перенос */
+    word-break: break-word; /* перенос*/
+    white-space: normal;
     padding: 0;
   }
 
-  /* 4. КОНТЕНТ (КАРТОЧКИ): 100% ширины */
   .main {
     max-width: 100%;
     width: 100%;
-    padding: 0; 
-    gap: 40px; 
+    padding: 0;
+    gap: 40px;
   }
 
-  /* 5. КАРТОЧКА ПОСТА: Полная ширина от края до края */
   .post {
-    width: 100%; 
-    max-width: 100%; 
-    margin: 0; 
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
   }
 
-  /* 6. ВНУТРЕННИЙ КОНТЕНТ КАРТОЧКИ: Отступы только для текста */
   .post__content {
-    /* Добавляем внутренний отступ для текста 15px с боков */
-    padding: 25px 15px 22px; 
+    padding: 25px 15px 22px;
   }
   
-  /* 7. КНОПКА СОХРАНИТЬ: Улучшаем расположение */
   .main__footer {
     width: 100%;
     padding: 0 10px;
@@ -315,17 +301,14 @@ dialog::backdrop {
   }
   
   .footer__button {
-    /* Чтобы кнопка занимала всю доступную ширину */
-    width: 100%; 
+    width: 100%;
     min-width: unset;
   }
   
-  /* 8. ДИАЛОГОВОЕ ОКНО: Убедимся, что оно не выходит за рамки */
   .dialog {
-    width: 90%; 
+    width: 90%;
     max-width: 357px;
-    /* Уменьшаем паддинги, если они слишком большие */
-    padding: 20px; 
+    padding: 20px;
   }
   
   .dialog__warning {
@@ -333,10 +316,8 @@ dialog::backdrop {
     gap: 15px;
   }
   
-  /* 9. Текст в кнопке */
   .button__text {
-    /* Сбрасываем возможные ограничения белого пространства */
-    white-space: normal; 
+    white-space: normal;
   }
 }
 
