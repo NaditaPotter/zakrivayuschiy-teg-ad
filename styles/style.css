@@ -4,8 +4,7 @@
   max-width: 100%;
   margin: 100px auto;
 
-  /*только для компов*/
-  min-inline-size: 320px;
+  min-inline-size: 320px;  /*только для компов*/
   min-block-size: 100dvb;
 
   background: var(--background-gradient); /*сеточка в переменной*/
@@ -55,57 +54,48 @@
   text-transform: uppercase;
 }
 
+/*карточки*/
 .main {
   display: flex;
   flex-direction: column;
-  gap: 50px;/* м/д карточками */
+  gap: 50px;/* м/д */
 }
 
 .post {
-  border: 3px solid var(--main-color);  /* рамка карточки */
+  border: 3px solid var(--main-color);
   background-color: var(--background-color);
 }
 
-/* Заголовок поста */
 .post__title {
   padding: 5px 10px;
   font-size: 19px;
   font-variation-settings: "wght" var(--font-weight-heading);
 }
 
-/* Обложка — картинка + рамки сверху/снизу */
 .post__cover {
-  position: relative;
+  position: relative; /* для водяного знака */
   border-top: 2px solid var(--main-color);
   border-bottom: 2px solid var(--main-color);
 }
 
-/* Картинка обложки */
 .post__cover__image {
   width: 100%;
   height: 100%;
   display: block;
-  object-fit: cover;                    /* заполнение контейнера с обрезкой по краям */
-  object-position: center;
+  object-fit: cover;/* обрезкой по краям */
 }
-/* Примечание: если заменить object-fit: contain, картинка уместится целиком, но могут быть поля */
 
-/* ============================================================
-   4. IMAGE LABEL (Водяной знак поверх картинки)
-   ------------------------------------------------------------
-   "плашка" в правом верхнем углу картинок
-   ============================================================ */
+/*<>*/
 .post__cover__watermark {
   position: absolute;
   top: 25px;
   right: 25px;
-  opacity: 0.85;
+  opacity: 0.85; /*прозрачность*/
   color: var(--main-color);
   font-family: var(--font-accent), sans-serif;
   font-weight: 400;
   font-size: 14px;
   text-align: right;
-  text-shadow: 1px 1px 0 var(--watermark-stroke-color, currentColor); /* тонкая "обводка" */
 }
 
 /* Фоллбек: если браузер поддерживает text-stroke и mix-blend-mode,
