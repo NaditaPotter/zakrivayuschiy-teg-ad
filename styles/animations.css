@@ -19,7 +19,7 @@
   0% {
     transform: scale(1);
   }
-  95% {
+  99% {
     transform: scale(1.5);
   }
   100% {
@@ -27,23 +27,24 @@
   }
 }
 
-/* Основной вид иконки */
+/*сердца*/
 .like-icon {
   fill: var(--text-color);
-  transition: fill 0.3s var(--anim-like-transition-delay, 0s) linear;
+  transition: fill 0.3s var(--anim-like-transition-delay, 0s) linear; /* плавное перекрашивание */
 }
 
-/* Плавное изменение цвета основных частей сердца */
+/*+*/
 .like-icon .core,
 .like-icon .main-body {
   transition: fill 0.3s ease;
 }
 
+/*задержка */
 .like-icon .main-body {
   transition-delay: 0.05s;
 }
 
-/* Цвет при наведении и нажатии */
+/*сердце действия*/
 .like-icon:hover .core,
 .like-icon:hover .main-body,
 .like-icon:active .core,
@@ -51,13 +52,13 @@
   fill: var(--main-color);
 }
 
-/* Состояние лайкнутого сердца */
+/* При установке класса is-liked запускается анимация увеличения */
 .like-icon.is-liked {
   animation: like-increase var(--anim-like-duration) var(--anim-like-delay) ease-in;
   transform-origin: center;
 }
 
-/* Цвет сердца при лайке */
+/* перекрашиваются в красный */
 .like-icon.is-liked .core {
   fill: var(--active-heart-color);
   transition: fill 0.3s 0.1s ease;
@@ -73,88 +74,77 @@
   transition: fill 0.3s 0.22s ease;
 }
 
-/* Вспышки */
+/* вспышка */
 .like-icon.is-liked .sparks {
-  opacity: 1;
+  opacity: 1;                  
   animation: like-flash var(--anim-like-duration) var(--anim-like-sparks-delay) ease-in;
 }
 
-/* Состояние без лайка */
-.like-icon:not(.is-liked) .contour {
-  fill: var(--main-color);
-  transition: fill 0.1s linear;
+.card__icon-button {
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
-/* Скрытые вспышки по умолчанию */
+.card__icon-button:focus {
+  outline: none; /*рамка фокус*/
+}
+
+/* Убираем лишний псевдо-элемент */
+.card__icon-button::before {
+  display: none;
+}
+
+/*лайк*/
+.card__like-button {
+  position: relative; /*Контейнер*/
+  border: 2px solid var(--main-color);
+  overflow: hidden;/* скрываем выезжающий фон */
+  background: var(--background-color);
+  transition: box-shadow 0.3s ease;   /* + тень */
+}
+
+ /*+ тень*/
+.card__like-button:focus {
+  outline: none;
+  box-shadow: 2px 2px 0 0 var(--main-color);
+}
+
+.card__like-button:hover {
+  box-shadow: 2px 2px 0 0 var(--main-color);
+}
+
+.card__like-button::before {
+  content: "";
+  position: absolute;
+  left: -100%;/* фон за пределами слева */
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--main-color); /* "залив" */
+  transition: left 0.5s ease-in-out; /* плавное заезжание */
+}
+
+.card__like-button .button__text {
+  position: relative;
+  z-index: 2;/* текст поверх заливки */
+  color: var(--main-color);      /* по умолчанию тёмный (чёрный) */
+  transition: color 0.3s ease;
+}
+
+.card__like-button:hover .button__text {
+  color: var(--button-text-color);
+}
+
+/* По умолчанию вспышки спрятаны 
 .like-icon .sparks {
   opacity: 0;
   fill: transparent;
   transition: opacity 0.1s linear, fill 0.1s linear;
 }
 
-/* <3 */
-.card__icon-button {
-  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+
+/* Контур сердца остаётся в обычном цвете 
+.like-icon:not(.is-liked) .contour {
+  fill: var(--main-color);
+  transition: fill 0.1s linear;
 }
-
-.card__icon-button:focus {
-  outline: none;
-}
-
-.card__icon-button::before {
-  display: none;
-}
-
-
-/* КНОПКА LIKE */
-
-.card__like-button {
-  position: relative;
-  border: 2px solid var(--main-color);
-  overflow: hidden;
-  background: var(--background-color);
-  transition: box-shadow 0.3s ease;
-}
-
-/* Фокус — тень */
-.card__like-button:focus {
-  outline: none;
-  box-shadow: 2px 2px 0 0 var(--main-color);
-}
-
-/* Ховер — та же тень */
-.card__like-button:hover {
-  box-shadow: 2px 2px 0 0 var(--main-color);
-}
-
-/* Левый→правый “залив” */
-.card__like-button::before {
-  content: "";
-  position: absolute;
-  left: -100%;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: var(--main-color);
-  transition: left 0.5s ease-in-out;
-}
-
-/* При наведении фон заезжает */
-.card__like-button:hover::before {
-  left: 0;
-}
-
-/* Текст */
-.card__like-button .button__text {
-  position: relative;
-  z-index: 2;
-  color: var(--main-color);      /* 🔹 по умолчанию чёрный */
-  transition: color 0.3s ease;
-}
-
-/* При наведении текст становится белым */
-.card__like-button:hover .button__text {
-  color: var(--button-text-color); /* 🔹 белый */
-}
-
-
+  */
