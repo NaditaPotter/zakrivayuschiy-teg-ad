@@ -1,13 +1,12 @@
 /* В этом файле вы импортируете все шрифты для сайта. Один из них вариативный и требует особенной настройки */
-/* В этом файле вы импортируете все шрифты для сайта. Один из них вариативный и требует особенной настройки */
 
 /* --- 1. Вариативный шрифт Inter (Ошибки 2 и 3) --- */
 @font-face {
-    font-family: "Inter-Variable"; 
+    font-family: "Inter-Variable";
     font-style: normal;
     
     /* Ошибка 3: Заданы все необходимые начертания (400 и 785) в виде диапазона (font-weight: 400 785) */
-    font-weight: 400 785; 
+    font-weight: 400 785;
 
     /* Ошибка 2: Указаны правильные форматы для вариативных шрифтов (woff2 supports variations, woff2-variations) */
     src: url("../fonts/Inter-Variable.woff2") format("woff2 supports variations"),
@@ -18,8 +17,8 @@
 
 /* --- 2. Акцентный шрифт PressStart2P (Ошибка 1) --- */
 @font-face {
-    font-family: "PressStart2P"; 
-    font-weight: normal; /* Для этого шрифта используется только одно начертание (обычное) */
+    font-family: "PressStart2P";
+    font-weight: normal;/* Для этого шрифта используется только одно начертание (обычное) */
     font-style: normal;
     
     /* Указан корректный путь до файла */
