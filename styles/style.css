@@ -10,20 +10,13 @@
 
 */
 
-/*
-Основной файл стилей проекта "Закрывающий тег".
-Все значения, которые были закомментированы в variables.css, подставлены напрямую.
-*/
-
 /* --- 1. PAGE SETUP (Основной контейнер body) --- */
-
 .page {
   /* Фон (Шаг 6) */
   background: var(--background-gradient); /* Предполагается, что --background является --background-gradient */
   background-position: center;
   background-attachment: fixed;
   background-size: cover;
-
   /* Размеры и центрирование (Шаг 2.2, 2.3) */
   /* --page-width: 700px; */
   width: 700px;
