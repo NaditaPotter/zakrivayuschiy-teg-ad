@@ -98,7 +98,7 @@
   text-align: right;
 }
 
-/* Тело поста (текст, кнопки) */
+/*все что внутри*/
 .post__content {
   display: flex;
   flex-direction: column;
@@ -110,19 +110,13 @@
   font-variation-settings: "wght" var(--font-weight-content);
 }
 
-/* ============================================================
-   5. BUTTONS AND INTERACTIONS (Кнопки: Like, Footer и др.)
-   ------------------------------------------------------------
-   Здесь — все правила для кнопок и их псевдоэлементов (залив)
-   ============================================================ */
 .post__buttons {
   display: flex;
-  justify-content: end;                 /* выравнивание кнопок вправо */
+  justify-content: end;/* кнопки вправо*/
   gap: 7px;
   padding-bottom: 3px;
 }
 
-/* Футер (нижняя панель) */
 .main__footer {
   justify-content: center;
   display: flex;
@@ -132,35 +126,24 @@
   margin: 50px auto 0;
 }
 
-/* Общие стили для кнопок */
 .button {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px solid var(--main-color);
-  background-color: var(--background-color);
-  transition: box-shadow 0.3s ease;     /* плавность для тени */
   cursor: pointer;
 }
 
-/* При наведении и фокусе даём тень */
-.button:hover,
-.button:focus {
-  box-shadow: 2px 2px 0px 0px var(--main-color); /* смещённая контурная тень */
-}
-
-/* Кнопка-обёртка для иконки (сердца) */
+/* сердца) */
 .card__icon-button {
-  position: relative;
-  display: flex;
-  align-items: end;
-  min-height: 38px;
   border: none;
   background-color: transparent;
-  cursor: pointer;
 }
-.card__icon-button:focus { outline: none; }
+
+/*  position: relative;
+  display: flex;
+  align-items: end;
+  min-height: 38px;*/
 
 /* Визуальная подсветка при нажатии: псевдоэлемент outline */
 .card__icon-button::before {
