@@ -1,11 +1,160 @@
-/* Опишите в этом файле все keyframes для проекта и стили анимаций иконки Like.
+/* Анимации и стили иконки Like */
 
-Будьте внимательны! Для корректной работы скриптов на этом сайте нужно, чтобы в HTML некоторые классы были названы особым образом:
-✦ like-icon — для svg-иконки анимированного сердца
-✦ card__like-button — для кнопки Like рядом с иконкой
-✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ is-liked — для обозначения состояния лайкнутой иконки в виде сердца
-✦ button__text — для обозначения текстового элемента внутри кнопки
-
+/* Важно: HTML-классы должны оставаться: 
+   like-icon, card__like-button, card__icon-button, is-liked, button__text
 */
+
+@keyframes like-flash {
+  from {
+    opacity: 0;
+    fill: transparent; /* полностью прозрачная вспышка*/
+  }
+  to {
+    opacity: 1;
+    fill: var(--active-heart-color); /* красные искры */
+  }
+}
+
+@keyframes like-increase {
+  0% {
+    transform: scale(1);
+  }
+  95% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Основной вид иконки */
+.like-icon {
+  fill: var(--text-color);
+  transition: fill 0.3s var(--anim-like-transition-delay, 0s) linear;
+}
+
+/* Плавное изменение цвета основных частей сердца */
+.like-icon .core,
+.like-icon .main-body {
+  transition: fill 0.3s ease;
+}
+
+.like-icon .main-body {
+  transition-delay: 0.05s;
+}
+
+/* Цвет при наведении и нажатии */
+.like-icon:hover .core,
+.like-icon:hover .main-body,
+.like-icon:active .core,
+.like-icon:active .main-body {
+  fill: var(--main-color);
+}
+
+/* Состояние лайкнутого сердца */
+.like-icon.is-liked {
+  animation: like-increase var(--anim-like-duration) var(--anim-like-delay) ease-in;
+  transform-origin: center;
+}
+
+/* Цвет сердца при лайке */
+.like-icon.is-liked .core {
+  fill: var(--active-heart-color);
+  transition: fill 0.3s 0.1s ease;
+}
+
+.like-icon.is-liked .main-body {
+  fill: var(--active-heart-color);
+  transition: fill 0.3s 0.16s ease;
+}
+
+.like-icon.is-liked .contour {
+  fill: var(--active-heart-color);
+  transition: fill 0.3s 0.22s ease;
+}
+
+/* Вспышки */
+.like-icon.is-liked .sparks {
+  opacity: 1;
+  animation: like-flash var(--anim-like-duration) var(--anim-like-sparks-delay) ease-in;
+}
+
+/* Состояние без лайка */
+.like-icon:not(.is-liked) .contour {
+  fill: var(--main-color);
+  transition: fill 0.1s linear;
+}
+
+/* Скрытые вспышки по умолчанию */
+.like-icon .sparks {
+  opacity: 0;
+  fill: transparent;
+  transition: opacity 0.1s linear, fill 0.1s linear;
+}
+
+/* <3 */
+.card__icon-button {
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.card__icon-button:focus {
+  outline: none;
+}
+
+.card__icon-button::before {
+  display: none;
+}
+
+
+/* КНОПКА LIKE */
+
+.card__like-button {
+  position: relative;
+  border: 2px solid var(--main-color);
+  overflow: hidden;
+  background: var(--background-color);
+  transition: box-shadow 0.3s ease;
+}
+
+/* Фокус — тень */
+.card__like-button:focus {
+  outline: none;
+  box-shadow: 2px 2px 0 0 var(--main-color);
+}
+
+/* Ховер — та же тень */
+.card__like-button:hover {
+  box-shadow: 2px 2px 0 0 var(--main-color);
+}
+
+/* Левый→правый “залив” */
+.card__like-button::before {
+  content: "";
+  position: absolute;
+  left: -100%;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--main-color);
+  transition: left 0.5s ease-in-out;
+}
+
+/* При наведении фон заезжает */
+.card__like-button:hover::before {
+  left: 0;
+}
+
+/* Текст */
+.card__like-button .button__text {
+  position: relative;
+  z-index: 2;
+  color: var(--main-color);      /* 🔹 по умолчанию чёрный */
+  transition: color 0.3s ease;
+}
+
+/* При наведении текст становится белым */
+.card__like-button:hover .button__text {
+  color: var(--button-text-color); /* 🔹 белый */
+}
+
+
