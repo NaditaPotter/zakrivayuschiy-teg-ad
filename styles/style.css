@@ -230,7 +230,13 @@ dialog::backdrop {
   color: var(--main-color);
 }
 
-/* сложный набор эффектов — используется в одном из тестов */
+
+.image_sepia { filter: sepia(68%); } /*корич*/
+.image_blur { filter: blur(0.13rem); }
+.image_grayscale { filter: grayscale(0.50); } /*чб*/
+.image_opacity { filter: opacity(0.20); } /*прозрачн*/
+.image_saturate { filter: saturate(200%); } /*яркость*/
+.image_brightness { filter: brightness(150%); }
 .image_effects {
   filter: blur(0.1rem) opacity(0.8) brightness(101%) grayscale(0.5)
           saturate(115%) sepia(50%) contrast(111%);
