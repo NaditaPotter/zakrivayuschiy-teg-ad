@@ -76,7 +76,7 @@
 
 /* вспышка */
 .like-icon.is-liked .sparks {
-  opacity: 1;                  
+  opacity: 1;
   animation: like-flash var(--anim-like-duration) var(--anim-like-sparks-delay) ease-in;
 }
 
@@ -133,18 +133,3 @@
 .card__like-button:hover .button__text {
   color: var(--button-text-color);
 }
-
-/* По умолчанию вспышки спрятаны 
-.like-icon .sparks {
-  opacity: 0;
-  fill: transparent;
-  transition: opacity 0.1s linear, fill 0.1s linear;
-}
-
-
-/* Контур сердца остаётся в обычном цвете 
-.like-icon:not(.is-liked) .contour {
-  fill: var(--main-color);
-  transition: fill 0.1s linear;
-}
-  */
